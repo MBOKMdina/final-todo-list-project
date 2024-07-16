@@ -1,9 +1,9 @@
-let userInUse = JSON.parse(localStorage.getItem('userInUse'))
-let list = JSON.parse(localStorage.getItem('list')) || [];
+let userInUseTst = JSON.parse(localStorage.getItem('userInUseTst'))
+let listTst = JSON.parse(localStorage.getItem('listTst')) || [];
 let intervalId;
 let alertSound = new Audio('audio/02. Src1 Se Morpheus Noti.mp3');
 let firstTimeArray = [];
-let automateLists = JSON.parse(localStorage.getItem('automateLists')) || [];
+let automateListsTst = JSON.parse(localStorage.getItem('automateListsTst')) || [];
 
 /*let list =[
     {
@@ -35,7 +35,7 @@ audio.play();
 
 document.querySelector('.js-greeting').innerHTML = 
 `
-    Good day, ${userInUse}
+    Good day, ${userInUseTst}
 `;
 
 
@@ -52,8 +52,8 @@ document.querySelectorAll('.js-addToDoList').forEach((addToDoDiv)=>
                 </div>
             </div>
             <div class="contents">
-                <input type="date" class="js-input" placeholder="new todo list date">
-                <button class="js-enter">Enter</button>
+                <input type="date" class="todo-date js-input" placeholder="new todo list date">
+                <button class="enter-button js-enter">Enter</button>
             </div>
             </div>
         `;
@@ -178,7 +178,7 @@ function  renderList()
     let todoList = [];
     let objectList = [];
     let count = 0;
-    list.forEach((listObject, index)=>
+    listTst.forEach((listObject, index)=>
     {
         date = listObject.date;
         todoList = listObject.todoList;
@@ -200,10 +200,10 @@ function  renderList()
     document.querySelector('.js-block').innerHTML = listHTML;
     document.querySelectorAll('.js-add-todo-button').forEach((addbtn, indexMain)=>
     {
-        let automated = findMatchingItem(list[indexMain]);
+        let automated = findMatchingItem(listTst[indexMain]);
         addbtn.addEventListener('click', ()=>
         {
-            addTodo(indexMain, list[indexMain].todoList);
+            addTodo(indexMain, listTst[indexMain].todoList);
             /*findMatchingItem(list[indexMain]);*/
             if (!automated)
             {
@@ -211,7 +211,7 @@ function  renderList()
             }
             else
             {
-                automated.todoList = list[indexMain].todoList; 
+                automated.todoList = listTst[indexMain].todoList; 
                 /*console.log(automateLists);*/
             }
             renderList();
@@ -222,7 +222,7 @@ function  renderList()
         {
             deleteButton.addEventListener('click', ()=>
             {
-                list[indexMain].todoList.splice(index, 1);
+                listTst[indexMain].todoList.splice(index, 1);
                 automated.todoList.splice(index, 1);
                 if(!automated)
                 {
@@ -230,7 +230,7 @@ function  renderList()
                 }
                 else
                 {
-                    automated.todoList = list[indexMain].todoList;
+                    automated.todoList = listTst[indexMain].todoList;
                 }
                 /*console.log(automateLists);*/
                 renderList();
@@ -242,7 +242,7 @@ function  renderList()
     {
         subtractbtn.addEventListener('click',()=>
         {
-            list.splice(index, 1);
+            listTst.splice(index, 1);
             renderList();
             saveToStorage();
         });
@@ -262,14 +262,14 @@ function  renderList()
 
 function addList(todoDate)
 {
-    list.push(
+    listTst.push(
     {
         date: todoDate,
         todoList: []
     });
-    if(automateLists.length < 4)
+    if(automateListsTst.length < 4)
     {
-        automateLists.push(
+        automateListsTst.push(
         {
             date: todoDate,
             todoList: []
@@ -277,8 +277,8 @@ function addList(todoDate)
     }
     else
     {
-        automateLists.splice(0, 1);
-        automateLists.push(
+        automateListsTst.splice(0, 1);
+        automateListsTst.push(
         {
             date: todoDate,
             todoList: []
@@ -289,13 +289,13 @@ function addList(todoDate)
 
 function saveToStorage()
 {
-    localStorage.setItem('list', JSON.stringify(list));
+    localStorage.setItem('listTst', JSON.stringify(listTst));
     /*console.log('Saved to local storage');*/
 }
 
 function saveToStorageAuto()
 {
-    localStorage.setItem('automateLists', JSON.stringify(automateLists));
+    localStorage.setItem('automateListsTst', JSON.stringify(automateListsTst));
 }
 
 function checkBox()
@@ -309,14 +309,14 @@ function checkBox()
         {
             if(checkBox.innerHTML === '')
             {
-                list[listIndex].todoList[checkBoxIndex].complete = true;
+                listTst[listIndex].todoList[checkBoxIndex].complete = true;
                 checkBox.innerHTML =`
                 <img class="check" src="images/check-mark.png">
                 `;
             }
             else
             {
-                list[listIndex].todoList[checkBoxIndex].complete = false;
+                listTst[listIndex].todoList[checkBoxIndex].complete = false;
                 checkBox.innerHTML = '';
             }
             saveToStorage();
@@ -373,9 +373,9 @@ function time()
 
 document.querySelector('.js-log-out').addEventListener('click',()=>
 {
-    localStorage.removeItem('userInUse');
-    window.open('login-signUp.html');
-    window.close('mainPage.html');
+    localStorage.removeItem('userInUseTst');
+    window.open('login-signUp-Tst.html');
+    window.close('mainPage-Tst.html');
 });
 
 function enhancedEventListener()
@@ -436,7 +436,7 @@ function editDescription(description, element)
             let specified = element.dataset.descriptionId;
             let listIndex = specified.substring(0, 1);
             let descriptionIndex = specified.substring(specified.length - 1);
-            list[listIndex].todoList[descriptionIndex].name = newDescription;
+            listTst[listIndex].todoList[descriptionIndex].name = newDescription;
             saveToStorage();
             editDescription(newDescription);
         })
@@ -485,8 +485,8 @@ function editTime(time, element)
             let specified = element.dataset.timeId;
             let listIndex = specified.substring(0, 1);
             let timeIndex = specified.substring(specified.length - 1);
-            list[listIndex].todoList[timeIndex].time = newTime;
-            automateLists[listIndex].todoList[timeIndex].time = newTime;
+            listTst[listIndex].todoList[timeIndex].time = newTime;
+            automateListsTst[listIndex].todoList[timeIndex].time = newTime;
             saveToStorage();
             saveToStorageAuto();
             editTime(newTime);
@@ -497,7 +497,7 @@ function editTime(time, element)
 
 setInterval(()=>
 {
-    list.forEach((object)=>
+    listTst.forEach((object)=>
     {
         let day = dayjs().format('YYYY-MM-DD');
         /*console.log(object.date)*/
@@ -580,71 +580,74 @@ function bellRing()
     }, 2000);
 }
 
-document.querySelector('.js-automate-list').addEventListener('click',()=>
+document.querySelectorAll('.js-automate-list').forEach((automateButton)=>
 {
-    let html = '';
-    automateLists.forEach((listItem, index)=>
+    automateButton.addEventListener('click', ()=>
     {
-        html = html + `
-        <div class="list-date js-list-date" data-automate-id="${index}">${listItem.date}</div>`;
-    });
-
-    if(html === '')
-    {
-        document.querySelector('.js-list-history').innerHTML = 
-        `
-            <div class="background2"></div>
-            <div class="select-list-UI">
-                <div class="list-history-heading">
-                    Select previosuly created lists
-                    <div class="x-div js-x-div"><img class="x2-img" src="images/x.svg"></div>
-                </div>
-                <div class="list-history-content">
-                    <div class="no-list-history">you currently have no list history.</div>
-                </div>
-            </div> 
-        `;
-
-    }
-    else
-    {
-        document.querySelector('.js-list-history').innerHTML = 
-        `
-            <div class="background2"></div>
-            <div class="select-list-UI">
-                <div class="list-history-heading">
-                    Select previosuly created lists
-                    <div class="x-div js-x-div"><img class="x2-img" src="images/x.svg"></div>
-                </div>
-                <div class="list-history-content">
-                    ${html}
-                </div>
-            </div> 
-        `;
-    }
-
-    document.querySelector('.js-x-div').addEventListener('click',()=>
-    {
-        document.querySelector('.js-list-history').innerHTML = ``;
-    });
-
-    document.querySelectorAll('.js-list-date').forEach((listDateDiv)=>
-    {
-        listDateDiv.addEventListener('click', ()=>
+        let html = '';
+        automateListsTst.forEach((listItem, index)=>
         {
-            let listIndex = listDateDiv.dataset.automateId;
-            let day = dayjs().format('YYYY-MM-DD');
-            automateLists[listIndex].date = day;
-            list.push(automateLists[listIndex]);
-            renderList();
+            html = html + `
+            <div class="list-date js-list-date" data-automate-id="${index}">${listItem.date}</div>`;
+        });
+
+        if(html === '')
+        {
+            document.querySelector('.js-list-history').innerHTML = 
+            `
+                <div class="background2"></div>
+                <div class="select-list-UI">
+                    <div class="list-history-heading">
+                        Select previosuly created lists
+                        <div class="x-div js-x-div"><img class="x2-img" src="images/x.svg"></div>
+                    </div>
+                    <div class="list-history-content">
+                        <div class="no-list-history">you currently have no list history.</div>
+                    </div>
+                </div> 
+            `;
+
+        }
+        else
+        {
+            document.querySelector('.js-list-history').innerHTML = 
+            `
+                <div class="background2"></div>
+                <div class="select-list-UI">
+                    <div class="list-history-heading">
+                        Select previosuly created lists
+                        <div class="x-div js-x-div"><img class="x2-img" src="images/x.svg"></div>
+                    </div>
+                    <div class="list-history-content">
+                        ${html}
+                    </div>
+                </div> 
+            `;
+        }
+
+        document.querySelector('.js-x-div').addEventListener('click',()=>
+        {
+            document.querySelector('.js-list-history').innerHTML = ``;
+        });
+
+        document.querySelectorAll('.js-list-date').forEach((listDateDiv)=>
+        {
+            listDateDiv.addEventListener('click', ()=>
+            {
+                let listIndex = listDateDiv.dataset.automateId;
+                let day = dayjs().format('YYYY-MM-DD');
+                automateListsTst[listIndex].date = day;
+                listTst.push(automateListsTst[listIndex]);
+                renderList();
+            })
         })
-    })
+    });
 });
 
 function findMatchingItem(list)
 {
     let matchingList;
-    automateLists.forEach((automicList)=>
+    automateListsTst.forEach((automicList)=>
     {
         if(list.date === automicList.date)
         {

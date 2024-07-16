@@ -446,6 +446,73 @@
 
 @media (min-height: 889.8px)/*Will apply all styles until min height is met*/
 {
+    .x
+    {
+        height: 45px;
+        width: 45px;
+    }
+
+    .close
+    {
+        top: 0;
+        bottom: 0;
+        width: 60px;
+        background-color: red;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        position: absolute;
+        right:0px;
+        border-left: solid;
+        border-width: 1px;
+        border-color: black;
+    }
+
+    .todo-date
+    {
+        /*height: 42.4px;*/
+        width: 508.8px;
+        font-size: 39.9999px;
+    }
+
+    .enter-button
+    {
+        height: 63.6;
+        width: 141.18px;
+        font-size: 39.9999px;
+    }
+    
+    .close-contain
+    {
+        background-color: lightgrey;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 60px;
+        border-bottom: solid;
+        border-width: 1px;
+        border-color: black;
+    }
+
+    .ui-new-todo
+    {
+        background-color: grey;
+        height: 240px;
+        width: 900px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        margin-top: -121.2px;
+        margin-left: -451.2px;
+        border: solid;
+        border-width: 1px;
+        border-color: black;
+    }
+    
     .todo-block
     {
         font-size: 40px;
