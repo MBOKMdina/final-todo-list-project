@@ -371,11 +371,14 @@ function time()
     });
 }
 
-document.querySelector('.js-log-out').addEventListener('click',()=>
+document.querySelectorAll('.js-log-out').forEach((logOutButton)=>
 {
-    localStorage.removeItem('userInUse');
-    window.open('login-signUp.html');
-    window.close('mainPage.html');
+    logOutButton.addEventListener('click',()=>
+    {
+        localStorage.removeItem('userInUse');
+        window.open('login-signUp.html');
+        window.close('mainPage.html');
+    });
 });
 
 function enhancedEventListener()
