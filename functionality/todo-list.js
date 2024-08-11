@@ -52,8 +52,8 @@ document.querySelectorAll('.js-addToDoList').forEach((addToDoDiv)=>
                 </div>
             </div>
             <div class="contents">
-                <input type="date" class="js-input" placeholder="new todo list date">
-                <button class="js-enter">Enter</button>
+                <input type="date" class="todo-date js-input" placeholder="new todo list date">
+                <button class="enter-button js-enter">Enter</button>
             </div>
             </div>
         `;
@@ -376,8 +376,8 @@ document.querySelectorAll('.js-log-out').forEach((logOutButton)=>
     logOutButton.addEventListener('click',()=>
     {
         localStorage.removeItem('userInUse');
-        window.open('login-signUp.html');
-        window.close('mainPage.html');
+        window.open('login-signUp-Tst.html');
+        window.close('mainPage-Tst.html');
     });
 });
 
@@ -583,65 +583,68 @@ function bellRing()
     }, 2000);
 }
 
-document.querySelector('.js-automate-list').addEventListener('click',()=>
+document.querySelectorAll('.js-automate-list').forEach((automateButton)=>
 {
-    let html = '';
-    automateLists.forEach((listItem, index)=>
+    automateButton.addEventListener('click', ()=>
     {
-        html = html + `
-        <div class="list-date js-list-date" data-automate-id="${index}">${listItem.date}</div>`;
-    });
-
-    if(html === '')
-    {
-        document.querySelector('.js-list-history').innerHTML = 
-        `
-            <div class="background2"></div>
-            <div class="select-list-UI">
-                <div class="list-history-heading">
-                    Select previosuly created lists
-                    <div class="x-div js-x-div"><img class="x2-img" src="images/x.svg"></div>
-                </div>
-                <div class="list-history-content">
-                    <div class="no-list-history">you currently have no list history.</div>
-                </div>
-            </div> 
-        `;
-
-    }
-    else
-    {
-        document.querySelector('.js-list-history').innerHTML = 
-        `
-            <div class="background2"></div>
-            <div class="select-list-UI">
-                <div class="list-history-heading">
-                    Select previosuly created lists
-                    <div class="x-div js-x-div"><img class="x2-img" src="images/x.svg"></div>
-                </div>
-                <div class="list-history-content">
-                    ${html}
-                </div>
-            </div> 
-        `;
-    }
-
-    document.querySelector('.js-x-div').addEventListener('click',()=>
-    {
-        document.querySelector('.js-list-history').innerHTML = ``;
-    });
-
-    document.querySelectorAll('.js-list-date').forEach((listDateDiv)=>
-    {
-        listDateDiv.addEventListener('click', ()=>
+        let html = '';
+        automateLists.forEach((listItem, index)=>
         {
-            let listIndex = listDateDiv.dataset.automateId;
-            let day = dayjs().format('YYYY-MM-DD');
-            automateLists[listIndex].date = day;
-            list.push(automateLists[listIndex]);
-            renderList();
+            html = html + `
+            <div class="list-date js-list-date" data-automate-id="${index}">${listItem.date}</div>`;
+        });
+
+        if(html === '')
+        {
+            document.querySelector('.js-list-history').innerHTML = 
+            `
+                <div class="background2"></div>
+                <div class="select-list-UI">
+                    <div class="list-history-heading">
+                        Select previosuly created lists
+                        <div class="x-div js-x-div"><img class="x2-img" src="images/x.svg"></div>
+                    </div>
+                    <div class="list-history-content">
+                        <div class="no-list-history">you currently have no list history.</div>
+                    </div>
+                </div> 
+            `;
+
+        }
+        else
+        {
+            document.querySelector('.js-list-history').innerHTML = 
+            `
+                <div class="background2"></div>
+                <div class="select-list-UI">
+                    <div class="list-history-heading">
+                        Select previosuly created lists
+                        <div class="x-div js-x-div"><img class="x2-img" src="images/x.svg"></div>
+                    </div>
+                    <div class="list-history-content">
+                        ${html}
+                    </div>
+                </div> 
+            `;
+        }
+
+        document.querySelector('.js-x-div').addEventListener('click',()=>
+        {
+            document.querySelector('.js-list-history').innerHTML = ``;
+        });
+
+        document.querySelectorAll('.js-list-date').forEach((listDateDiv)=>
+        {
+            listDateDiv.addEventListener('click', ()=>
+            {
+                let listIndex = listDateDiv.dataset.automateId;
+                let day = dayjs().format('YYYY-MM-DD');
+                automateLists[listIndex].date = day;
+                list.push(automateLists[listIndex]);
+                renderList();
+            })
         })
-    })
+    });
 });
 
 function findMatchingItem(list)
