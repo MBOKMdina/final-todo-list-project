@@ -223,7 +223,7 @@ function  renderList()
             deleteButton.addEventListener('click', ()=>
             {
                 list[indexMain].todoList.splice(index, 1);
-                automated.todoList.splice(index, 1);
+                /*automated.todoList.splice(index, 1);*/
                 if(!automated)
                 {
                     /*console.log('Item not found');*/
