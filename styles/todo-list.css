@@ -253,7 +253,7 @@
     }
 }
 
-.edit-description-conatainer,
+.edit-description-container,
 .edit-time-container 
 {
     position: absolute;
@@ -677,6 +677,126 @@
         grid-template-columns: 300px 225px 200px 1fr;
         column-gap: 10px;
         row-gap: 10px;
+        align-items: center;
+    }
+
+    .enhanced-description-ui,
+    .enhanced-time-ui
+    {
+        background-color: white;
+        height: 240px;
+        width: 720px;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        margin-top: -210px;
+        margin-left: -450px;
+        border-radius: 15px;
+        overflow: auto;
+        padding: 90px;
+        word-wrap: break-word;
+        z-index: 3;
+        font-size: 48px;
+    }
+
+    .x2
+    {
+        height: 60px;
+        width: 60px;
+        position: fixed;
+        margin-top: -120px;
+        margin-left: -120px;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgb(159, 159, 159);
+        border-radius: 100%;
+        z-index: 4;
+    }
+
+    .edit-description-container,
+    .edit-time-container 
+    {
+        position: absolute;
+        height: 180px;
+        width: 750px;
+        top: 50%;
+        left: 50%;
+        z-index: 3;
+        margin-left: -375px;
+        margin-top: -90px;
+        background-color: lightgray;
+        display: flex;
+        /*align-items: center;
+        justify-content: space-around;*/
+        border: solid;
+        border-width: 3px;
+        border-radius: 30px;
+    }
+
+    .edit-time-container
+    {
+        width: 514.8px;
+        margin-left: -259.8px;
+    }
+
+    .edit-description
+    {
+        width: 508.8px;
+        height: 63.6px;
+        font-size: 40px;
+        padding-left: 10px;
+    }
+
+    .edit-enter
+    {
+        width: 141.18px;
+        font-size: 40px;
+    }
+
+    .edit-time
+    {
+        width: 216.6px;
+        font-size: 40px;
+    }
+
+    .alertDiv
+    {
+        display: flex;
+        align-items: center;
+        margin-top: 18px;
+        height: 150px;
+        width: 855px;
+        background-color: white;
+        position: absolute;
+        padding: 45px;
+        border-radius:45px;
+        justify-content: space-around;
+    }
+
+    .pointer
+    {
+        rotate: 45deg;
+        background-color: white;
+        height: 60px;
+        width: 60px;
+        position: absolute;
+        margin-top: 6px;
+        margin-left: 60px;
+    }
+
+    .bell
+    {
+        height: 100px;
+        width: 100px;
+    }
+
+    .alertMessage
+    {
+        display: flex;
+        flex-direction: row;
+        margin-left: 30px;
         align-items: center;
     }
 
