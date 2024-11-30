@@ -33,7 +33,7 @@ document.querySelector('.js-log-in').addEventListener('click',()=>
         let authentication = check(comparison);
         if(authentication)
         {
-            localStorage.setItem('userInUseTst', JSON.stringify(comparison));
+            localStorage.setItem('userInUse', JSON.stringify(comparison));
             window.close('login-signUp.html');
             window.open('mainPage.html');
         }    

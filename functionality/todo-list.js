@@ -100,7 +100,7 @@ function renderTodoList(indexMain, todoList, list)
         //const name = todoObject.name;
         //const dueDate = todoObject.dueDate;
         count++;
-        let rowId = `${indexMain}${count}`;
+        let rowId = `${indexMain}/${count}`;
         const { name, time, complete} = todoObject;
         let checked = '';
         if(complete)
@@ -303,8 +303,9 @@ function checkBox()
     document.querySelectorAll('.js-checkBox').forEach((checkBox)=>
     {
         let specified = checkBox.dataset.checkId;
-        let listIndex = specified.substring(0, 1);
-        let checkBoxIndex = specified.substring(specified.length - 1);
+        let divider = specified.indexOf('/');
+        let listIndex = specified.substring(0,divider);
+        let checkBoxIndex = specified.substring(divider + 1, specified.length);
         checkBox.addEventListener('click',()=>
         {
             if(checkBox.innerHTML === '')
@@ -376,8 +377,8 @@ document.querySelectorAll('.js-log-out').forEach((logOutButton)=>
     logOutButton.addEventListener('click',()=>
     {
         localStorage.removeItem('userInUse');
-        window.open('login-signUp-Tst.html');
-        window.close('mainPage-Tst.html');
+        window.open('login-signUp.html');
+        window.close('mainPage.html');
     });
 });
 
@@ -387,7 +388,7 @@ function enhancedEventListener()
     {
         document.querySelector('.js-edit-control').innerHTML =
         `
-        <div class="edit-description-conatainer js-edit-container">
+        <div class="edit-description-container js-edit-container">
             <div class="edit-contents">
                 <input class="edit-description js-edit-description">
                 <button class="edit-enter">Enter</button>
@@ -409,7 +410,7 @@ function editDescription(description, element)
         <div class="enhanced-description-ui js-enhanced-ui">
             <div class="x2 js-x2"><img class="x2-img" src="images/x.svg"></div>
             <div class="js-description-text">${description}</div>
-            <div class="edit-description-conatainer js-edit-container">
+            <div class="edit-description-container js-edit-container">
                 <div class="edit-contents">
                     <input class="edit-description js-edit-description">
                     <button class="edit-enter js-edit-enter">Enter</button>
@@ -437,8 +438,9 @@ function editDescription(description, element)
             });
             element.innerHTML = newDescription;
             let specified = element.dataset.descriptionId;
-            let listIndex = specified.substring(0, 1);
-            let descriptionIndex = specified.substring(specified.length - 1);
+            let divider = specified.indexOf('/');
+            let listIndex = specified.substring(0,divider);
+            let descriptionIndex = specified.substring(divider + 1, specified.length);
             list[listIndex].todoList[descriptionIndex].name = newDescription;
             saveToStorage();
             editDescription(newDescription);
@@ -486,8 +488,9 @@ function editTime(time, element)
             });
             element.innerHTML = newTime;
             let specified = element.dataset.timeId;
-            let listIndex = specified.substring(0, 1);
-            let timeIndex = specified.substring(specified.length - 1);
+            let divider = specified.indexOf('/');
+            let listIndex = specified.substring(0,divider);
+            let timeIndex = specified.substring(divider + 1, specified.length);
             list[listIndex].todoList[timeIndex].time = newTime;
             automateLists[listIndex].todoList[timeIndex].time = newTime;
             saveToStorage();
