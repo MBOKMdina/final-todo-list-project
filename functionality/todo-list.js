@@ -2,7 +2,7 @@ let userInUse = JSON.parse(localStorage.getItem('userInUse'))
 let list = JSON.parse(localStorage.getItem('list')) || [];
 let intervalId;
 let alertSound = new Audio('audio/02. Src1 Se Morpheus Noti.mp3');
-let firstTimeArray = [];
+let firstTimeArray = JSON.parse(localStorage.getItem('firstTimeArray')) || [];;
 let automateLists = JSON.parse(localStorage.getItem('automateLists')) || [];
 
 /*let list =[
@@ -559,6 +559,7 @@ setInterval(()=>
                         }
                     });
                     firstTimeArray.push(event);
+                    localStorage.setItem('firstTimeArray', JSON.stringify(firstTimeArray));
                 }
             });
         }
@@ -641,10 +642,51 @@ document.querySelectorAll('.js-automate-list').forEach((automateButton)=>
             listDateDiv.addEventListener('click', ()=>
             {
                 let listIndex = listDateDiv.dataset.automateId;
-                let day = dayjs().format('YYYY-MM-DD');
-                automateLists[listIndex].date = day;
-                list.push(automateLists[listIndex]);
-                renderList();
+                document.querySelector('.js-add-procedure').innerHTML = `
+                    <div class="background2"></div>
+                    <div class="ui-new-todo">
+                        <div class="close-contain">
+                            <div class="close js-close">
+                                <img class="x" src="images/x.svg">
+                            </div>
+                        </div>
+                        <div class="contents">
+                            <input type="date" class="todo-date js-input" placeholder="new todo list date">
+                            <button class="enter-button js-enter">Enter</button>
+                        </div>
+                    </div>
+                `;
+                document.querySelector('.js-close').addEventListener('click', ()=>
+                {
+                    document.querySelector('.js-add-procedure').innerHTML = ``
+                });
+        
+                document.querySelector('.js-enter').addEventListener('click', ()=>
+                {
+                    let dateTodoStr = document.querySelector('.js-input');
+                    let dateToDo = dateTodoStr.value;
+                    automateLists[listIndex].date = dateToDo;
+                    list.push(automateLists[listIndex]);
+                    renderList();
+                    document.querySelector('.js-add-procedure').innerHTML = ``;
+                    
+                });
+        
+                document.addEventListener('keydown', (event)=>
+                {
+                    if(event.key === 'Enter')
+                    {
+                        let dateTodoStr = document.querySelector('.js-input');
+                        let dateToDo = dateTodoStr.value;
+                        automateLists[listIndex].date = dateToDo;
+                        list.push(automateLists[listIndex]);
+                        renderList();
+                        document.querySelector('.js-add-procedure').innerHTML = ``;
+                    }
+                });
+                checkBox();
+                description();
+                time();
             })
         })
     });
