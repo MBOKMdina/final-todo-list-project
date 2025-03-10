@@ -377,7 +377,7 @@ document.querySelectorAll('.js-log-out').forEach((logOutButton)=>
     logOutButton.addEventListener('click',()=>
     {
         localStorage.removeItem('userInUse');
-        window.open('login-signUp.html');
+        window.open('index.html');
         window.close('mainPage.html');
     });
 });

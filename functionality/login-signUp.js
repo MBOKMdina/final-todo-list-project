@@ -35,8 +35,8 @@ document.querySelector('.js-log-in').addEventListener('click',()=>
         if(authentication)
         {
             localStorage.setItem('userInUse', JSON.stringify(comparison));
-            window.close('login-signUp.html');
-            window.open('index.html');
+            window.close('index.html');
+            window.open('mainPage.html');
         }    
         else
         {
