@@ -1,9 +1,9 @@
 let userInUse = JSON.parse(localStorage.getItem('userInUse'))
-let list = JSON.parse(localStorage.getItem('list')) || [];
+let list = JSON.parse(localStorage.getItem(`${userInUse}`)) || [];
 let intervalId;
 let alertSound = new Audio('audio/02. Src1 Se Morpheus Noti.mp3');
 let firstTimeArray = JSON.parse(localStorage.getItem('firstTimeArray')) || [];;
-let automateLists = JSON.parse(localStorage.getItem('automateLists')) || [];
+let automateLists = JSON.parse(localStorage.getItem(`${userInUse}Automate`)) || [];
 
 /*let list =[
     {
@@ -289,13 +289,13 @@ function addList(todoDate)
 
 function saveToStorage()
 {
-    localStorage.setItem('list', JSON.stringify(list));
+    localStorage.setItem(`${userInUse}`, JSON.stringify(list));
     /*console.log('Saved to local storage');*/
 }
 
 function saveToStorageAuto()
 {
-    localStorage.setItem('automateLists', JSON.stringify(automateLists));
+    localStorage.setItem(`${userInUse}Automate`, JSON.stringify(automateLists));
 }
 
 function checkBox()

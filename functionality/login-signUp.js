@@ -1,4 +1,5 @@
-import { users, check, generateId } from "../data/users.js";
+
+let users = JSON.parse(localStorage.getItem('users')) || [];
 
 function close()
 {
@@ -30,12 +31,12 @@ document.querySelector('.js-log-in').addEventListener('click',()=>
     {
         let valueLI = document.querySelector('.js-inputLI-user');
         let comparison = valueLI.value;
-        let authentication = check(comparison);
+        let authentication = checkUser(comparison);
         if(authentication)
         {
             localStorage.setItem('userInUse', JSON.stringify(comparison));
             window.close('login-signUp.html');
-            window.open('mainPage.html');
+            window.open('index.html');
         }    
         else
         {
@@ -96,17 +97,14 @@ document.querySelector('.js-sign-up').addEventListener('click',()=>
         {
             if(firstValue === secondValue)
             {
-                if(check(firstValue))
+                if(checkUser(firstValue))
                 {
                     document.querySelector('.js-sign-up-error').innerHTML =`This user already exists.`;
                 }
                 else
                 {
-                    users.push(
-                    {
-                        name: firstValue,
-                        dataId: generateId()
-                    });
+                    users.push(firstValue);
+                    localStorage.setItem('users', JSON.stringify(users));
                     document.querySelector('.js-appropriate-UI').innerHTML = 
                     `
                     <div class="error-container">
@@ -140,5 +138,18 @@ document.querySelector('.js-sign-up').addEventListener('click',()=>
         };
     })
 });
+
+function checkUser(comparison)
+{
+    let authentication = false;
+    users.forEach((user)=>
+    {
+        if(user === comparison)
+        {
+            return authentication = true;
+        }
+    });
+    return authentication;
+}
 
 
