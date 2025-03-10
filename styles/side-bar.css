@@ -144,6 +144,7 @@
     .side-bar
     {
         z-index: -1;
+        opacity: 0;
     }
 
     .side-bar-APK
