@@ -154,6 +154,7 @@
 
     .side-bar-APK
     {
+        opacity: 1;
         position: fixed;
         flex-direction: column;
         background-color: rgb(15, 77, 146);
