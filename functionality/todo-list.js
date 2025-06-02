@@ -48,7 +48,7 @@ document.querySelectorAll('.js-addToDoList').forEach((addToDoDiv)=>
             <div class="ui-new-todo">
             <div class="close-contain">
                 <div class="close js-close">
-                    <img class="x" src="images/x.svg">
+                    <img class="x" src="images/xsmall.png">
                 </div>
             </div>
             <div class="contents">
@@ -336,7 +336,7 @@ function description()
             document.querySelector('.js-enhanced-description').innerHTML = `
                 <div class="background2 js-background2"></div>
                 <div class="enhanced-description-ui js-enhanced-ui">
-                    <div class="x2 js-x2"><img class="x2-img" src="images/x.svg"></div>
+                    <div class="x2 js-x2"><img class="x2-img" src="images/xsmall.png"></div>
                     <div class="js-description-text">${enhanced}</div>
                 </div>
             `;
@@ -359,7 +359,7 @@ function time()
             document.querySelector('.js-enhanced-time').innerHTML = `
                 <div class="background2 js-background2"></div>
                 <div class="enhanced-time-ui js-enhanced-ui">
-                    <div class="x2 js-x2"><img class="x2-img" src="images/x.svg"></div>
+                    <div class="x2 js-x2"><img class="x2-img" src="images/xsmall.png"></div>
                     <div class="js-time-text">${enhanced}</div>
                 </div>
             `;
@@ -408,7 +408,7 @@ function editDescription(description, element)
         `
         <div class="background2 js-background2"></div>
         <div class="enhanced-description-ui js-enhanced-ui">
-            <div class="x2 js-x2"><img class="x2-img" src="images/x.svg"></div>
+            <div class="x2 js-x2"><img class="x2-img" src="images/xsmall.png"></div>
             <div class="js-description-text">${description}</div>
             <div class="edit-description-container js-edit-container">
                 <div class="edit-contents">
@@ -428,7 +428,7 @@ function editDescription(description, element)
             `
             <div class="background2 js-background2"></div>
             <div class="enhanced-description-ui js-enhanced-ui">
-                <div class="x2 js-x2"><img class="x2-img" src="images/x.svg"></div>
+                <div class="x2 js-x2"><img class="x2-img" src="images/xsmall.png"></div>
                 <div class="js-description-text">${newDescription}</div>
             </div>
             `;
@@ -457,7 +457,7 @@ function editTime(time, element)
         `
         <div class="background2 js-background2"></div>
         <div class="enhanced-time-ui js-enhanced-ui">
-            <div class="x2 js-x2"><img class="x2-img" src="images/x.svg"></div>
+            <div class="x2 js-x2"><img class="x2-img" src="images/xsmall.png"></div>
             <div class="js-time-text">${time}</div>
             <div class="edit-time-container js-edit-container">
                 <div class="edit-contents">
@@ -478,7 +478,7 @@ function editTime(time, element)
             `
             <div class="background2 js-background2"></div>
             <div class="enhanced-time-ui js-enhanced-ui">
-                <div class="x2 js-x2"><img class="x2-img" src="images/x.svg"></div>
+                <div class="x2 js-x2"><img class="x2-img" src="images/xsmall.png"></div>
                 <div class="js-time-text">${newTime}</div>
             </div>
             `;
@@ -606,7 +606,7 @@ document.querySelectorAll('.js-automate-list').forEach((automateButton)=>
                 <div class="select-list-UI">
                     <div class="list-history-heading">
                         Select previosuly created lists
-                        <div class="x-div js-x-div"><img class="x2-img" src="images/x.svg"></div>
+                        <div class="x-div js-x-div"><img class="x2-img" src="images/xsmall.png"></div>
                     </div>
                     <div class="list-history-content">
                         <div class="no-list-history">you currently have no list history.</div>
@@ -623,7 +623,7 @@ document.querySelectorAll('.js-automate-list').forEach((automateButton)=>
                 <div class="select-list-UI">
                     <div class="list-history-heading">
                         Select previosuly created lists
-                        <div class="x-div js-x-div"><img class="x2-img" src="images/x.svg"></div>
+                        <div class="x-div js-x-div"><img class="x2-img" src="images/xsmall.png"></div>
                     </div>
                     <div class="list-history-content">
                         ${html}
@@ -647,7 +647,7 @@ document.querySelectorAll('.js-automate-list').forEach((automateButton)=>
                     <div class="ui-new-todo">
                         <div class="close-contain">
                             <div class="close js-close">
-                                <img class="x" src="images/x.svg">
+                                <img class="x" src="images/xsmall.png">
                             </div>
                         </div>
                         <div class="contents">
@@ -706,3 +706,10 @@ function findMatchingItem(list)
     return matchingList;
 }
 
+/*document.querySelectorAll('.js-info').forEach((infoButton)=>
+{
+    infoButton.addEventListener('click', ()=>
+    {
+        window.open('Attributes.html');
+    })
+});*/

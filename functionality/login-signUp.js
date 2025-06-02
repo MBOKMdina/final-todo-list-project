@@ -48,7 +48,7 @@ document.querySelector('.js-log-in').addEventListener('click',()=>
                         <img src="images/x.svg" class="close">
                     </div>
                 </div>
-                <div class="message js-message">User not found <span><img src="images/sad.png" class="sad"></span>. Please ensure correct characters have been entered or try signing up.</div>
+                <div class="message js-message">User not found <span><img src="images/sad.png" class="expression"></span>. Please ensure correct characters have been entered or try signing up.</div>
             </div>
             `;
             close();
@@ -113,7 +113,7 @@ document.querySelector('.js-sign-up').addEventListener('click',()=>
                                 <img src="images/x.svg" class="close">
                             </div>
                         </div>
-                        <div class="message js-message">Sign up successful <span><img src="images/sign-up-check.png" class="sad"></span>. Now try and log in with your newly created account.</div>
+                        <div class="message js-message">Sign up successful <span><img src="images/sign-up-check.png" class="expression"></span>. Now try and log in with your newly created account.</div>
                     </div>
                     `;
                     close();
