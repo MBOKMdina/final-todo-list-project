@@ -765,4 +765,9 @@ body
         border-radius: 3px;
         font-size: 67px;
     }
+
+    .details
+    {
+        margin-top: 100px;
+    }
 }
