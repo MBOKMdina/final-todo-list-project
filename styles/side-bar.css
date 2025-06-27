@@ -136,6 +136,21 @@ a
     }
 }
 
+@keyframes growResponsive
+{
+    0%
+    {
+        height: 50px;
+        width: 50px;
+    }
+
+    100%
+    {
+        height: 100px;
+        width: 100px;
+    }
+}
+
 @keyframes slide-in
 {
     0%
@@ -297,6 +312,7 @@ a
     {
         width: 100px;
         height: 100px;
+        animation: growResponsive 1s;
     }
 
     .k-container
