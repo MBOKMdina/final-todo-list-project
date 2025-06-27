@@ -118,7 +118,7 @@ a
 
 .side-bar-APK
 {
-    opacity: 0;
+    display: none;
 }
 
 @keyframes grow
