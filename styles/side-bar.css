@@ -274,3 +274,40 @@ a
     }
 
 }
+
+@media (max-height: 469.60px)
+{
+    .buttons
+    {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .add-list-container, .automate-list-container, .info-container, .log-out-container
+    {
+        width: auto;
+    }
+
+    .side-bar
+    {
+        width: 350px;
+    }
+
+    .todo-main
+    {
+        width: 150px;
+        height: 150px;
+    }
+
+    .k-container
+    {
+        height: 112.5px;
+        width: 112.5px;
+        font-size: 102.273px;
+    }
+
+    .shout-out
+    {
+        width: 335px;;
+    }
+}

@@ -80,3 +80,16 @@ body
     }
 
 }
+
+@media (max-height: 469.60px)
+{
+    .background
+    {
+        left: 350px;
+    }
+
+    body
+    {
+        padding-left: 370px;
+    }
+}
